@@ -1,0 +1,22 @@
+[Unit]
+Description=Backup pajbot files
+
+[Service]
+Nice=19
+# + if success
+# _ ignore result
+# - do if fails
+# Run pre-script
+# Regardless of result, run cleanup (_ operator)
+# When that finishes, regardless of result, continue into the [] bracket (_ operator)
+# Perform backup
+# If backup fails, run verify (- operator)
+# If bkp or verify succeeded, run purgeFull
+# Regardless of purgeFull results, run cleanup
+# Regardless of cleanup results, run post
+# --force makes it so that purgeFull and cleanup can actually delete files
+ExecStart=%h/bin/duply penis pre_cleanup_[bkp-verify]+purgeFull_cleanup_post --force
+KillSignal=SIGINT
+
+[Install]
+WantedBy=basic.target

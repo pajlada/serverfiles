@@ -1,0 +1,10 @@
+[Unit]
+Description=Run pajbot backup job regularly
+
+[Timer]
+OnCalendar=*-*-* 4:00:00
+Persistent=true
+Unit=backup-pajbot.service
+
+[Install]
+WantedBy=timers.target
