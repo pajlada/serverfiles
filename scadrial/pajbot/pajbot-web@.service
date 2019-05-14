@@ -1,0 +1,11 @@
+[Unit]
+Description=pajbot-web for %i
+
+[Service]
+WorkingDirectory=%h/git/pajbot
+ExecStart=%h/git/pajbot/myvenv/bin/uwsgi --ini uwsgi_shared.ini --ini uwsgi_cache.ini --socket /var/run/pajbot/%i-web.sock --pyargv "--config configs/%i.ini" --virtualenv myvenv
+RestartSec=2
+Restart=always
+
+[Install]
+WantedBy=default.target

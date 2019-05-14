@@ -1,0 +1,11 @@
+[Unit]
+Description=pajbot for %i
+
+[Service]
+WorkingDirectory=%h/git/pajbot
+ExecStart=%h/git/pajbot/myvenv/bin/python3 main.py --config "configs/%i.ini"
+RestartSec=2
+Restart=always
+
+[Install]
+WantedBy=default.target
