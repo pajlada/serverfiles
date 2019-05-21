@@ -1,0 +1,11 @@
+[Unit]
+Description=Chatterino API
+DefaultDependencies=no
+
+[Service]
+ExecStart=%h/git/chatterino-api/api -h "127.0.0.1:5001" -p "/chatterino/"
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=default.target
